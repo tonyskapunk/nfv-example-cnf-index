@@ -53,6 +53,6 @@ jobs:
           echo "## DCI components" >> ${GITHUB_STEP_SUMMARY}
           echo "" >> ${GITHUB_STEP_SUMMARY}
           echo "```JSON" >> ${GITHUB_STEP_SUMMARY}
-          echo ${{ steps.dci.outputs.components }} | jq . >> ${GITHUB_STEP_SUMMARY} 
+          echo '${{ steps.dci.outputs.components }}' | jq . >> ${GITHUB_STEP_SUMMARY} 
           echo "```" >> ${GITHUB_STEP_SUMMARY}
           echo "" >> ${GITHUB_STEP_SUMMARY}
