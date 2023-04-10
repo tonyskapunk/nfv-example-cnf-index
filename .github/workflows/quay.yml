@@ -32,10 +32,6 @@ jobs:
       #    VERSION=${TAG/v/}
       #    make all ORG=${ORG} VERSION=${VERSION}
 
-      - name: Get repo name
-        run: echo "name=${GITHUB_REPOSITORY/*\/}" >> ${GITHUB_OUTPUT}
-        id: repo
-
       - name: Create DCI components
         uses: dci-labs/dci-component@output_env
         with:
@@ -53,10 +49,10 @@ jobs:
 
       - name: Results
         run: |
+          
           echo "## DCI components" >> ${GITHUB_STEP_SUMMARY}
-          echo "Running in repo: ${{ steps.repo.name }}" >> ${GITHUB_STEP_SUMMARY}
           echo "" >> ${GITHUB_STEP_SUMMARY}
           echo "```JSON" >> ${GITHUB_STEP_SUMMARY}
-          <<<'${{ steps.dci.outputs.components }}' jq . >> ${GITHUB_STEP_SUMMARY} 
+          echo ${{ steps.dci.outputs.components }} | jq . >> ${GITHUB_STEP_SUMMARY} 
           echo "```" >> ${GITHUB_STEP_SUMMARY}
           echo "" >> ${GITHUB_STEP_SUMMARY}
