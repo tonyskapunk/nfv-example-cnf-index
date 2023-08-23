@@ -39,10 +39,9 @@ jobs:
           dciApiSecret: ${{ secrets.DCI_API_SECRET }}
           dciTopics: '
           OCP-4.5,
-          OCP-4.6,
-          OCP-4.7,
+          OCP-4.6
           '
-          componentName: nfv-example-cnf-index
+          componentName: test-component-00
           componentVersion: ${{ github.ref_name }}
           componentData: '{"url":"${{ env.REGISTRY }}/${{ github.repository_owner }}/nfv-example-cnf-catalog"}'
           componentRelease: ga
